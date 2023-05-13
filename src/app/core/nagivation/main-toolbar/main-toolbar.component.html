@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <span>Mudae Marry List Organizer</span>
+  <span class="toolbar-spacer"></span>
+  <button
+    mat-icon-button
+    color="primary"
+    appIconToggle="dark_mode|light_mode"
+    [(value)]="useDarkTheme">
+    <mat-icon></mat-icon>
+  </button>
+  <!--
+  <mat-slide-toggle [checked]="useDarkTheme" (change)="useDarkTheme = $event.checked"></mat-slide-toggle>
+  -->
+</mat-toolbar>
