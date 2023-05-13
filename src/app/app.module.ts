@@ -4,8 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import {MatListModule} from "@angular/material/list";
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 
@@ -17,8 +15,6 @@ import {SharedModule} from "./shared/shared.module";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatListModule,
     CoreModule,
     SharedModule
   ],

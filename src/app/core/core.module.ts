@@ -19,10 +19,6 @@ import {MatIconModule} from "@angular/material/icon";
   imports: [
     CommonModule,
     SharedModule,
-    MatToolbarModule,
-    MatSlideToggleModule,
-    MatButtonModule,
-    MatIconModule
   ]
 })
 export class CoreModule { }

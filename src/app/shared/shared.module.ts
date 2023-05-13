@@ -2,21 +2,36 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from "@angular/material/button";
 import { IconToggleDirective } from './button/icon-toggle/icon-toggle.directive';
-import { IconToggleButtonComponent } from './button/icon-toggle-button/icon-toggle-button.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
 
 
+
+const creations = [
+  IconToggleDirective
+];
+
+const sharedModules = [
+  MatButtonModule,
+  MatIconModule,
+  MatListModule,
+  MatToolbarModule,
+  DragDropModule
+];
 
 @NgModule({
   declarations: [
-    IconToggleDirective,
-    IconToggleButtonComponent
+    ...creations
   ],
   exports: [
-    IconToggleDirective
+    ...creations,
+    ...sharedModules
   ],
   imports: [
     CommonModule,
-    MatButtonModule
+    ...sharedModules
   ]
 })
 export class SharedModule { }
