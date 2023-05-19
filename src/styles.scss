@@ -1,6 +1,8 @@
-/* Global Styles */
+@use 'sass:map';
 @use '@angular/material' as mat;
-@include mat.core();
+@import 'material';
+
+/* Global Styles */
 
 html, body {
   height: 100%;
@@ -10,46 +12,20 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+$color-config: mat.get-color-config($dark-theme);
 
-// Define a dark theme
-$dark-theme: mat.define-dark-theme((
-  color: (
-    primary: mat.define-palette(mat.$pink-palette),
-    accent: mat.define-palette(mat.$blue-grey-palette),
-  ),
-  // Only include `typography` and `density` in the default dark theme.
-  typography: mat.define-typography-config(),
-  density: 0,
-));
-
-// Define a light theme
-$light-theme: mat.define-light-theme((
-  color: (
-    primary: mat.define-palette(mat.$indigo-palette),
-    accent: mat.define-palette(mat.$pink-palette),
-  ),
-));
+@include mat.core-theme($light-theme);
+@include mat.all-component-themes($light-theme);
 
 .app-dark-theme {
-  @include mat.core-theme($dark-theme);
-  @include mat.button-theme($dark-theme);
+  @include mat.all-component-colors($dark-theme);
+
+  $color-config: mat.get-color-config($dark-theme) !global;
 }
 
 .app-light-theme {
-  @include mat.core-color($light-theme);
-  @include mat.button-color($light-theme);
+  // Uses default @include above
+
+  $color-config: mat.get-color-config($light-theme) !global;
 }
 
-/**
-// Apply the dark theme by default.
-@include mat.core-theme($dark-theme);
-@include mat.button-theme($dark-theme);
-
-// Apply the light theme only when the user prefers light themes.
-@media (prefers-color-scheme: light) {
-  // Use the `-color` mixins to only apply color styles without reapplying the same
-  // typography and density styles.
-  @include mat.core-color($light-theme);
-  @include mat.button-color($light-theme);
-}
-*/

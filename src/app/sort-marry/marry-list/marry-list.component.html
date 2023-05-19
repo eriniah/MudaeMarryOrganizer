@@ -1,0 +1,3 @@
+<mat-list cdkDropList (cdkDropListDropped)="characterDropped($event)">
+  <mat-list-item *ngFor="let character of characters" class="character-list-item" cdkDrag>{{ character.name }}</mat-list-item>
+</mat-list>
