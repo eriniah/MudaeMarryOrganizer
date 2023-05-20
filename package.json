@@ -22,7 +22,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev": "ng serve",
-    "prod": "ng build --base-href 'https://eriniah.github.io/MudaeMarryOrganizer/'",
+    "prod": "ng build --base-href \"https://eriniah.github.io/MudaeMarryOrganizer/\"",
     "deploy": "npx angular-cli-ghpages --dir=dist/mudae-marry-organizer"
   },
   "private": true,

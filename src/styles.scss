@@ -33,3 +33,7 @@ $color-config: mat.get-color-config($dark-theme);
   margin: 8px;
 }
 
+.toolbar-spacer {
+  flex: 1 1 auto;
+
+}

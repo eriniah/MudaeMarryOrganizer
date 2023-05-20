@@ -2,6 +2,8 @@
 
 Simple organization app for assisting with your mudae marry list
 
+Use the app [here](https://eriniah.github.io/MudaeMarryOrganizer/sort-marry)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

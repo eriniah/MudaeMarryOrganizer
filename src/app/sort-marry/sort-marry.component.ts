@@ -42,7 +42,7 @@ export class SortMarryComponent {
   public openImportDialog(): void {
     this.dialog.open(SortMarryImportDialogComponent, {
       height: '500px',
-      width: '500px',
+      width: '300px',
       enterAnimationDuration: '100ms',
       exitAnimationDuration: '100ms',
       data: {
@@ -67,6 +67,7 @@ export class SortMarryComponent {
       <app-marry-list-import></app-marry-list-import>
     </div>
     <div mat-dialog-actions>
+      <span></span>
       <button mat-button (click)="close()">Cancel</button>
       <button mat-button (click)="import()">Import</button>
     </div>
