@@ -1,9 +1,14 @@
 import {Component, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {MarryListImportComponent} from "./marry-list-import/marry-list-import.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
-interface DialogData {
-  import(characters: Character[]): void
+interface ImportDialogData {
+  import(characters: Character[]): void;
+}
+
+interface ExportDialogData {
+  characters: Character[];
 }
 
 @Component({
@@ -17,18 +22,25 @@ export class SortMarryComponent {
       name: 'Hatsune Miku'
     },
     {
-      name: 'Bongo Cat'
+      name: 'Rem'
     },
     {
-      name: 'Gawr Gura'
+      name: 'Mai Sakurajima'
+    },
+    {
+      name: 'Megumin'
+    },
+    {
+      name: 'Nezuko Kamado'
     }
   ];
 
-  constructor(private readonly dialog: MatDialog) {
+  constructor(private readonly dialog: MatDialog,
+              private readonly snackBar: MatSnackBar) {
   }
 
   public openImportDialog(): void {
-    this.dialog.open(SortMarryDialogComponent, {
+    this.dialog.open(SortMarryImportDialogComponent, {
       height: '500px',
       width: '500px',
       enterAnimationDuration: '100ms',
@@ -36,12 +48,19 @@ export class SortMarryComponent {
       data: {
         import: (characters: Character[]) => this.characters = characters
       }
-    })
+    });
+  }
+
+  public copy(): void {
+    const dataString = "!sortmarry " + this.characters.map((c: Character) => c.name).join(" $ ");
+    navigator.clipboard.writeText(dataString).then((v) =>
+      this.snackBar.open('Copied to clipboard!', undefined, { duration: 500 })
+    );
   }
 }
 
 @Component({
-  selector: 'app-sort-marry-dialog',
+  selector: 'app-sort-marry-import-dialog',
   template: `
     <h1 mat-dialog-title>Import mymarry</h1>
     <div mat-dialog-content>
@@ -53,15 +72,11 @@ export class SortMarryComponent {
     </div>
   `
 })
-export class SortMarryDialogComponent {
+export class SortMarryImportDialogComponent {
   @ViewChild(MarryListImportComponent) importComponent: MarryListImportComponent | null = null;
 
-  constructor(public dialogRef: MatDialogRef<SortMarryDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<SortMarryImportDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
-  }
-
-  public close(): void {
-    this.dialogRef.close();
   }
 
   public import(): void {
@@ -69,5 +84,9 @@ export class SortMarryDialogComponent {
       this.data.import(this.importComponent.import());
     }
     this.close();
+  }
+
+  public close(): void {
+    this.dialogRef.close();
   }
 }

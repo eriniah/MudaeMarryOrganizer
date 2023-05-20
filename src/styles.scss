@@ -29,3 +29,7 @@ $color-config: mat.get-color-config($dark-theme);
   $color-config: mat.get-color-config($light-theme) !global;
 }
 
+.page-indent {
+  margin: 8px;
+}
+

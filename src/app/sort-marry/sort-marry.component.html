@@ -1,11 +1,21 @@
-<mat-toolbar>
-  <span>Character List</span>
-  <span class="toolbar-spacer"></span>
-  <button
-    mat-icon-button
-    color="primary"
-    (click)="openImportDialog()">
-    <mat-icon>publish</mat-icon>
-  </button>
-</mat-toolbar>
-<app-marry-list [characters]="characters"></app-marry-list>
+<div class="page-indent">
+  <mat-toolbar>
+    <span>Character List</span>
+    <span class="toolbar-spacer"></span>
+    <button
+      mat-icon-button
+      color="primary"
+      title="Import"
+      (click)="openImportDialog()">
+      <mat-icon>upload</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="primary"
+      title="Download"
+      (click)="copy()">
+      <mat-icon>content_copy</mat-icon>
+    </button>
+  </mat-toolbar>
+  <app-marry-list [characters]="characters"></app-marry-list>
+</div>
